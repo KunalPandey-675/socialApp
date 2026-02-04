@@ -126,33 +126,61 @@ const Feed = () => {
 
         {/* Posts Feed */}
         <Box sx={{ mt: 3 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          <Box sx={{ mb: 2 }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
               All Posts
             </Typography>
             
             {/* Sort Buttons */}
-            <ButtonGroup size="small" variant="outlined">
+            <ButtonGroup 
+              size="small" 
+              variant="outlined"
+              orientation="horizontal"
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 1,
+                '& .MuiButtonGroup-grouped': {
+                  flex: { xs: '1 1 auto', sm: '0 1 auto' },
+                  minWidth: { xs: 'auto', sm: 'auto' }
+                }
+              }}
+            >
               <Button
                 variant={sortBy === 'recent' ? 'contained' : 'outlined'}
                 onClick={() => setSortBy('recent')}
                 startIcon={<AccessTimeIcon />}
+                sx={{
+                  px: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' }
+                }}
               >
-                Recent
+                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>Recent</Box>
+                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>Recent</Box>
               </Button>
               <Button
                 variant={sortBy === 'likes' ? 'contained' : 'outlined'}
                 onClick={() => setSortBy('likes')}
                 startIcon={<ThumbUpIcon />}
+                sx={{
+                  px: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' }
+                }}
               >
-                Most Liked
+                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>Most Liked</Box>
+                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>Liked</Box>
               </Button>
               <Button
                 variant={sortBy === 'comments' ? 'contained' : 'outlined'}
                 onClick={() => setSortBy('comments')}
                 startIcon={<CommentIcon />}
+                sx={{
+                  px: { xs: 1, sm: 2 },
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' }
+                }}
               >
-                Most Commented
+                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>Most Commented</Box>
+                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>Comments</Box>
               </Button>
             </ButtonGroup>
           </Box>
